@@ -57,6 +57,28 @@
       <label form="short" prefix=", "/>
     </names>
   </macro>
+  <macro name="access">
+    <choose>
+      <if variable="page">
+        <text value=""/>
+      </if>
+      <else-if variable="DOI">
+        <text variable="DOI" prefix="https://doi.org/"/>
+      </else-if>
+      <else-if variable="URL">
+        <text value="Available at:" suffix=" "/>
+        <text variable="URL"/>
+        <group prefix=" [" suffix="]">
+          <text term="accessed" text-case="capitalize-first" suffix=" "/>
+          <date variable="accessed">
+            <date-part name="month" suffix=" "/>
+            <date-part name="day" suffix=", "/>
+            <date-part name="year"/>
+          </date>
+        </group>
+      </else-if>
+    </choose>
+  </macro>
   <citation et-al-min="3" et-al-use-first="1" disambiguate-add-year-suffix="true" collapse="year">
     <sort>
       <key macro="author-short" names-min="1" names-use-first="1"/>
@@ -110,6 +132,7 @@
             <text macro="publisher"/>
           </else>
         </choose>
+        <text prefix=" " macro="access"/>
       </group>
     </layout>
   </bibliography>
