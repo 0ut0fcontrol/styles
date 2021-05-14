@@ -70,7 +70,7 @@
         <text prefix=" https://doi.org/" variable="DOI" suffix="."/>
       </else-if>
       <else-if variable="URL">
-        <text prefix=" Available at:" variable="URL" suffix="."/>
+        <text prefix=" " variable="URL" suffix="."/>
       </else-if>
     </choose>
   </macro>
